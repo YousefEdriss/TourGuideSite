@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Yahya Tours Egypt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script>(function(){var t=localStorage.getItem('yahya-theme');if(t)document.documentElement.dataset.theme=t;})();</script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <defs>
+          <linearGradient id="logoG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2C06A"/>
+            <stop offset="55%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8A7030"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#logoG)" stroke-width="2.2"/>
+        <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#logoG)" opacity=".75"/>
+        <circle cx="2.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
+        <circle cx="107.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
+        <text x="28" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">Y</text>
+        <text x="55" y="40" font-family="Cormorant Garamond, Georgia, serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
+        <text x="83" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">T</text>
+      </svg>
+      <div class="logo-wordmark">Yahya Tours<small>Egypt Private Guide</small></div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" data-page="index.html">Home</a></li>
+      <li><a href="reviews.html" data-page="reviews.html">Reviews</a></li>
+      <li><a href="contact.html" data-page="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="btn-primary nav-cta">Book Now</a>
+    <button id="themeToggle" class="theme-btn" aria-label="Switch to light mode"><span class="theme-icon">☀</span></button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════════ -->
+<div class="page-header">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1920&q=80')"></div>
+  <div class="ph-overlay"></div>
+  <div class="ph-content container">
+    <span class="section-label" style="justify-content:center;margin-bottom:1rem;">Get In Touch</span>
+    <h1>Plan Your Egypt Journey</h1>
+    <div class="gold-rule" style="margin:.8rem auto 1rem;"><div class="gold-rule-dot"></div></div>
+    <p>Tell Yahya your dates, your group, and what you'd love to see. He'll come back within 24 hours with a personalised plan built around you.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CONTACT MAIN
+══════════════════════════════════════ -->
+<section id="contact-main">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- ── Form ── -->
+      <div class="contact-form-box reveal">
+        <h2>Send Yahya a Message</h2>
+        <p>Fill in a few details and Yahya will be in touch within 24 hours. The more you share, the better he can tailor your tour.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Full Name *</label>
+              <input type="text" id="c-name" name="name" placeholder="John Smith" required/>
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address *</label>
+              <input type="email" id="c-email" name="email" placeholder="john@example.com" required/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-phone">Phone / WhatsApp</label>
+              <input type="tel" id="c-phone" name="phone" placeholder="+1 555 000 0000"/>
+            </div>
+            <div class="form-group">
+              <label for="c-tour">Tour of Interest</label>
+              <select id="c-tour" name="tour">
+                <option value="">Select a tour type…</option>
+                <option>Classic Egypt (Cairo, Luxor, Aswan)</option>
+                <option>Nile Cruise Experience</option>
+                <option>Cairo Short Break (3–5 days)</option>
+                <option>Custom &amp; Private Tour</option>
+                <option>Family Adventure</option>
+                <option>Honeymoon Package</option>
+                <option>Photography Tour</option>
+                <option>Red Sea &amp; Sinai Extension</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-date">Preferred Travel Dates</label>
+              <input type="text" id="c-date" name="date" placeholder="e.g. March 2025 or flexible"/>
+            </div>
+            <div class="form-group">
+              <label for="c-group">Group Size</label>
+              <select id="c-group" name="group">
+                <option value="">Select group size…</option>
+                <option>Solo traveler</option>
+                <option>2 people (couple)</option>
+                <option>3–5 people (family / friends)</option>
+                <option>6–10 people (small group)</option>
+                <option>10+ people (large group)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="c-message">Your Message *</label>
+            <textarea id="c-message" name="message" rows="5" placeholder="Tell Yahya about your dream Egypt trip — destinations you'd love to see, special occasions, dietary needs, photography interests, accessibility requirements…" required></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">
+              <span class="btn-text">✉️ Send Message</span>
+              <span class="btn-loading">Sending…</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── Sidebar ── -->
+      <div class="contact-sidebar reveal">
+
+        <div class="sidebar-box">
+          <h3>Contact Details</h3>
+          <div class="detail-row">
+            <span class="detail-ico">✉️</span>
+            <div>
+              <div class="detail-lbl">Email</div>
+              <div class="detail-val"><a href="mailto:yahya@yahyatours.com">yahya@yahyatours.com</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">💬</span>
+            <div>
+              <div class="detail-lbl">WhatsApp</div>
+              <div class="detail-val"><a href="https://wa.me/201001234567">+20 100 123 4567</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">📞</span>
+            <div>
+              <div class="detail-lbl">Phone</div>
+              <div class="detail-val"><a href="tel:+201001234567">+20 100 123 4567</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">📍</span>
+            <div>
+              <div class="detail-lbl">Based In</div>
+              <div class="detail-val">Cairo, Egypt 🇪🇬</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">⏰</span>
+            <div>
+              <div class="detail-lbl">Response Time</div>
+              <div class="detail-val">Within 24 hours</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Follow Yahya</h3>
+          <div class="detail-row">
+            <span class="detail-ico">📷</span>
+            <div>
+              <div class="detail-lbl">Instagram</div>
+              <div class="detail-val"><a href="#">@yahyatoursegypt</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">👤</span>
+            <div>
+              <div class="detail-lbl">Facebook</div>
+              <div class="detail-val"><a href="#">Yahya Tours Egypt</a></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">▶️</span>
+            <div>
+              <div class="detail-lbl">YouTube</div>
+              <div class="detail-val"><a href="#">Yahya Tours</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-box">
+          <h3>Why Choose Yahya</h3>
+          <div class="detail-row">
+            <span class="detail-ico">🏆</span>
+            <div>
+              <div class="detail-lbl">Experience</div>
+              <div class="detail-val">15+ years guiding in Egypt</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">🌍</span>
+            <div>
+              <div class="detail-lbl">Languages</div>
+              <div class="detail-val">Arabic, English, French, Spanish</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">⭐</span>
+            <div>
+              <div class="detail-lbl">Rating</div>
+              <div class="detail-val">5.0 stars across 10+ reviews</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <span class="detail-ico">🎓</span>
+            <div>
+              <div class="detail-lbl">Qualification</div>
+              <div class="detail-val">Egyptology degree, ETA certified</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Frequently Asked</span>
+      <h2>Questions About Yahya's Tours</h2>
+      <div class="gold-rule"><div class="gold-rule-dot"></div></div>
+      <p>Everything you need to know before booking your Egypt adventure.</p>
+    </div>
+
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">What's included in the tour package?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">The full package includes international and domestic flights, 4-star hotels with daily breakfast, private air-conditioned transfers, all entrance tickets (Pyramids, Valley of the Kings, Abu Simbel, Egyptian Museum, and more), Yahya's full guiding services, and personal photography at every landmark.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">How far in advance should I book?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">We recommend booking at least 4–8 weeks in advance, especially for peak season (October–April). However, Yahya can often accommodate shorter notice bookings — reach out and he'll do his best to make it work.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Is the tour suitable for families with children?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">Absolutely. Yahya has guided many families with children of all ages and tailors the pace and content to keep everyone engaged. Egypt is endlessly fascinating for curious young minds — the stories Yahya tells make history feel like an adventure.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Can the itinerary be customised?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">Yes — every tour Yahya runs is tailored to you. Whether you want a photography-focused trip, a honeymoon itinerary, a deep-dive into a specific dynasty, or a mix of culture and beach time, Yahya will shape the journey around your interests and timeline.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">What is the best time of year to visit Egypt?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">The ideal season is October through April when temperatures are comfortable (15–28°C). Summer (May–September) is very hot, especially in Luxor and Aswan (40°C+), but tours still run. Yahya can advise on the best timing for your specific itinerary and preferences.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Is Egypt safe to visit?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">Egypt's main tourist areas are very safe and well-travelled by millions of visitors every year. As a local, Yahya knows every area, every current condition, and keeps all guests safe and comfortable throughout the journey. He'll brief you on everything you need to know before you arrive.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Do I need a visa to visit Egypt?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">Most nationalities can obtain a visa on arrival at Cairo International Airport for a fee, or apply for an e-Visa online before travel. Yahya will advise you on the visa process specific to your nationality when you book, and help you prepare all travel documentation.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">Can Yahya cater to dietary requirements or accessibility needs?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="faq-a">Yes. Yahya takes all dietary requirements seriously — vegetarian, vegan, halal, kosher, allergies. He knows the best restaurants in every city and will ensure every meal suits your needs. For mobility or accessibility requirements, simply mention them when booking and the itinerary will be adapted accordingly.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;margin-bottom:.8rem;">
+          <svg width="60" height="38" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <defs><linearGradient id="fG3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E2C06A"/><stop offset="100%" stop-color="#8A7030"/></linearGradient></defs>
+            <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#fG3)" stroke-width="2"/>
+            <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#fG3)" opacity=".7"/>
+            <text x="28" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG3)" text-anchor="middle">Y</text>
+            <text x="55" y="40" font-family="Cormorant Garamond,Georgia,serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
+            <text x="83" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG3)" text-anchor="middle">T</text>
+          </svg>
+        </a>
+        <p>Your personal guide to the land of the Pharaohs. Private tours crafted around you — Cairo, Luxor, Aswan, and beyond.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="Facebook">👤</a>
+          <a href="https://wa.me/201001234567" class="social-btn" aria-label="WhatsApp">💬</a>
+          <a href="mailto:yahya@yahyatours.com" class="social-btn" aria-label="Email">✉️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Book a Tour</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="contact.html">Cairo &amp; Pyramids</a></li>
+          <li><a href="contact.html">Luxor &amp; Nile</a></li>
+          <li><a href="contact.html">Aswan &amp; Abu Simbel</a></li>
+          <li><a href="contact.html">Red Sea &amp; Sinai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yahya@yahyatours.com">yahya@yahyatours.com</a></li>
+          <li><a href="https://wa.me/201001234567">WhatsApp</a></li>
+          <li><a href="contact.html">Send a Message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Yahya Tours Egypt · Cairo 🇪🇬</span>
+      <span>Made with care in the land of the Pharaohs</span>
+    </div>
+  </div>
+</footer>
+
+<div id="toast">✅ Message sent! Yahya will reply within 24 hours.</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+

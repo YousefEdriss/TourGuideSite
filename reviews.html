@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews — Yahya Tours Egypt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script>(function(){var t=localStorage.getItem('yahya-theme');if(t)document.documentElement.dataset.theme=t;})();</script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <defs>
+          <linearGradient id="logoG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2C06A"/>
+            <stop offset="55%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8A7030"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#logoG)" stroke-width="2.2"/>
+        <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#logoG)" opacity=".75"/>
+        <circle cx="2.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
+        <circle cx="107.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
+        <text x="28" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">Y</text>
+        <text x="55" y="40" font-family="Cormorant Garamond, Georgia, serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
+        <text x="83" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">T</text>
+      </svg>
+      <div class="logo-wordmark">Yahya Tours<small>Egypt Private Guide</small></div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" data-page="index.html">Home</a></li>
+      <li><a href="reviews.html" data-page="reviews.html">Reviews</a></li>
+      <li><a href="contact.html" data-page="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="btn-primary nav-cta">Book Now</a>
+    <button id="themeToggle" class="theme-btn" aria-label="Switch to light mode"><span class="theme-icon">☀</span></button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════════ -->
+<div class="page-header">
+  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1920&q=80')"></div>
+  <div class="ph-overlay"></div>
+  <div class="ph-content container">
+    <span class="section-label" style="justify-content:center;margin-bottom:1rem;">Traveler Reviews</span>
+    <h1>What People Say About Yahya</h1>
+    <div class="gold-rule" style="margin:.8rem auto 1rem;"><div class="gold-rule-dot"></div></div>
+    <p>Every review is 5 stars. Real words from real travelers — from New York to Tokyo, Cairo wins them all.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     RATING SUMMARY
+══════════════════════════════════════ -->
+<section id="reviews-summary">
+  <div class="container">
+    <div class="rating-block">
+      <div class="rating-big">
+        <div class="rating-num">5.0</div>
+        <div class="rating-stars-big">★★★★★</div>
+        <div class="rating-count">Based on 10 reviews</div>
+      </div>
+
+      <div id="ratingBars">
+        <div class="bar-row">
+          <span class="bar-lbl">5★</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="100"></div></div>
+          <span class="bar-count">10</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">4★</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="0"></div></div>
+          <span class="bar-count">0</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">3★</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="0"></div></div>
+          <span class="bar-count">0</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">2★</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="0"></div></div>
+          <span class="bar-count">0</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">1★</span>
+          <div class="bar-track"><div class="bar-fill" data-pct="0"></div></div>
+          <span class="bar-count">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ALL REVIEWS
+══════════════════════════════════════ -->
+<section id="all-reviews">
+  <div class="container">
+    <div class="reviews-all-grid">
+
+      <!-- Review 1 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Yahya made our Egypt trip absolutely unforgettable. His knowledge of ancient history is extraordinary, and he took us to hidden gems the tourist buses never stop at. The pyramids at sunrise — just the two of us — is something I'll carry forever.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-teal">SM</div>
+          <div>
+            <div class="review-name">Sarah Mitchell</div>
+            <div class="review-origin">New York, USA · May 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I've traveled the world with many guides. Yahya is in a different league. He doesn't recite facts — he tells stories. By the end of the trip I felt like I understood Egypt, not just saw it. Best travel experience of my life, no hesitation.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-terra">JT</div>
+          <div>
+            <div class="review-name">James Thompson</div>
+            <div class="review-origin">London, UK · March 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">From the Valley of the Kings to Abu Simbel at dawn, every day was more beautiful than the last. Yahya organised everything flawlessly and always had time for our questions, our detours, and our spontaneous requests. Magnificent.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-brown">AK</div>
+          <div>
+            <div class="review-name">Anna Kleinschmidt</div>
+            <div class="review-origin">Berlin, Germany · January 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">The Nile cruise was the highlight of my life. The food Yahya recommended was authentic and incredible. He speaks 4 languages, has the warmth of a friend and the expertise of a professor. Already planning my return trip — with Yahya, of course.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-tan">MC</div>
+          <div>
+            <div class="review-name">María Castillo</div>
+            <div class="review-origin">Barcelona, Spain · February 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Family of 5 — including my 70-year-old parents and my 8-year-old son. Yahya tailored the pace for every one of us without anyone feeling rushed or left out. Egypt is magical, and Yahya is its perfect ambassador. He's practically family now.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-teal">RP</div>
+          <div>
+            <div class="review-name">Ravi Patel</div>
+            <div class="review-origin">Mumbai, India · April 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 6 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Yahya is the kind of guide who becomes a friend. His passion for Egypt is infectious. We arrived as strangers and left feeling like we'd lived there. The private sunrise at the pyramids — Yahya made that happen just for us. 10/10, zero hesitation.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-terra">LB</div>
+          <div>
+            <div class="review-name">Lena Bergström</div>
+            <div class="review-origin">Stockholm, Sweden · June 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 7 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">What sets Yahya apart is his storytelling. Ancient Egypt stopped being dates and facts — it became real, vivid, breathing history. I'm a school teacher and I've already recommended Yahya to every colleague planning an educational trip to Egypt.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-brown">CR</div>
+          <div>
+            <div class="review-name">Carlos Ruiz</div>
+            <div class="review-origin">Madrid, Spain · August 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 8 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Yahya arranged everything — hotels, transfers, sunrise at Abu Simbel, even a surprise felucca dinner on the Nile. Zero stress and 100% memories. If you're going to Egypt and not using Yahya, you're genuinely missing the best part of the experience.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-tan">YT</div>
+          <div>
+            <div class="review-name">Yuki Tanaka</div>
+            <div class="review-origin">Tokyo, Japan · September 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 9 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I'm a history professor and Yahya genuinely impressed me. His scholarly depth, combined with his warmth and ability to make history accessible to everyone in our group, is truly rare. I've recommended him to my university's study-abroad program.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-teal">MO</div>
+          <div>
+            <div class="review-name">Michael O'Brien</div>
+            <div class="review-origin">Toronto, Canada · October 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 10 -->
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">We surprised our parents with this trip for their 40th anniversary. Yahya knew it was special and went above and beyond to make every moment perfect — rose petals in the hotel, a private dinner by the pyramids. They still talk about it every single day.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-terra">SL</div>
+          <div>
+            <div class="review-name">Sofia Lima</div>
+            <div class="review-origin">São Paulo, Brazil · November 2024</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     LEAVE A REVIEW CTA
+══════════════════════════════════════ -->
+<section id="leave-review">
+  <div class="container">
+    <span class="section-label">Your Turn</span>
+    <h2>Traveled With Yahya?</h2>
+    <div class="gold-rule" style="margin:.8rem auto 1rem;"><div class="gold-rule-dot"></div></div>
+    <p>We'd love to hear about your experience. Share your journey and help other travelers discover Egypt the right way.</p>
+    <a href="mailto:yahya@yahyatours.com?subject=My Review — Yahya Tours" class="btn-primary">Leave a Review</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:inline-flex;margin-bottom:.8rem;">
+          <svg width="60" height="38" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <defs><linearGradient id="fG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E2C06A"/><stop offset="100%" stop-color="#8A7030"/></linearGradient></defs>
+            <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#fG2)" stroke-width="2"/>
+            <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#fG2)" opacity=".7"/>
+            <text x="28" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG2)" text-anchor="middle">Y</text>
+            <text x="55" y="40" font-family="Cormorant Garamond,Georgia,serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
+            <text x="83" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG2)" text-anchor="middle">T</text>
+          </svg>
+        </a>
+        <p>Your personal guide to the land of the Pharaohs. Private tours crafted around you — Cairo, Luxor, Aswan, and beyond.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="Facebook">👤</a>
+          <a href="https://wa.me/201001234567" class="social-btn" aria-label="WhatsApp">💬</a>
+          <a href="mailto:yahya@yahyatours.com" class="social-btn" aria-label="Email">✉️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Book a Tour</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="contact.html">Cairo &amp; Pyramids</a></li>
+          <li><a href="contact.html">Luxor &amp; Nile</a></li>
+          <li><a href="contact.html">Aswan &amp; Abu Simbel</a></li>
+          <li><a href="contact.html">Red Sea &amp; Sinai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yahya@yahyatours.com">yahya@yahyatours.com</a></li>
+          <li><a href="https://wa.me/201001234567">WhatsApp</a></li>
+          <li><a href="contact.html">Send a Message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Yahya Tours Egypt · Cairo 🇪🇬</span>
+      <span>Made with care in the land of the Pharaohs</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+

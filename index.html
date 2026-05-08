@@ -1,587 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yahya — Egypt Tour Guide</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yahya Tours — Egypt Private Tour Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script>(function(){var t=localStorage.getItem('yahya-theme');if(t)document.documentElement.dataset.theme=t;})();</script>
 </head>
 <body>
 
-<!-- ░░ NAVIGATION ░░ -->
-<nav class="navbar" id="navbar">
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav id="navbar">
   <div class="nav-inner">
-    <a href="#home" class="nav-logo">
-      <span class="logo-eye">◈</span> YAHYA TOURS
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <defs>
+          <linearGradient id="logoG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E2C06A"/>
+            <stop offset="55%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8A7030"/>
+          </linearGradient>
+        </defs>
+        <!-- Cartouche outer frame -->
+        <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#logoG)" stroke-width="2.2"/>
+        <!-- Cartouche bottom bar -->
+        <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#logoG)" opacity=".75"/>
+        <!-- Side dots -->
+        <circle cx="2.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
+        <circle cx="107.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
+        <!-- Letters -->
+        <text x="28" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">Y</text>
+        <text x="55" y="40" font-family="Cormorant Garamond, Georgia, serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
+        <text x="83" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">T</text>
+      </svg>
+      <div class="logo-wordmark">Yahya Tours<small>Egypt Private Guide</small></div>
     </a>
+
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#tours">Tours</a></li>
-      <li><a href="#included">Included</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html" data-page="index.html">Home</a></li>
+      <li><a href="reviews.html" data-page="reviews.html">Reviews</a></li>
+      <li><a href="contact.html" data-page="contact.html">Contact</a></li>
     </ul>
-    <a href="#contact" class="btn-outline nav-book">Book Now</a>
+
+    <a href="contact.html" class="btn-primary nav-cta">Book Now</a>
+    <button id="themeToggle" class="theme-btn" aria-label="Switch to light mode"><span class="theme-icon">☀</span></button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ░░ HERO ░░ -->
-<section class="hero" id="home">
-  <!-- Background photo — gradient shows if photo fails to load -->
-  <div class="hero-photo-bg">
-    <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=1920&q=80"
-         alt="" loading="eager" onerror="this.style.display='none'" />
-  </div>
-  <div class="hero-atmosphere"></div>
-  <!-- Floating gold particles -->
-  <div class="particles" aria-hidden="true">
-    <span class="p" style="left:12%;animation-delay:0s;animation-duration:9s"></span>
-    <span class="p" style="left:28%;animation-delay:2s;animation-duration:7s"></span>
-    <span class="p" style="left:46%;animation-delay:1.2s;animation-duration:11s"></span>
-    <span class="p" style="left:63%;animation-delay:3.5s;animation-duration:8s"></span>
-    <span class="p" style="left:80%;animation-delay:0.8s;animation-duration:10s"></span>
-    <span class="p" style="left:90%;animation-delay:4s;animation-duration:6s"></span>
-  </div>
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <canvas id="particleCanvas"></canvas>
 
-  <div class="hero-body">
-    <span class="hero-kicker">Your Personal Egypt Experience</span>
-    <h1 class="hero-headline"><em>Ancient Wonders.</em><br>Real Stories.</h1>
-    <p class="hero-desc">Join Yahya — born in Cairo, trained in history — for a 10-day journey through pyramids, temples, and the living Nile.</p>
-    <div class="hero-cta-row">
-      <a href="#contact" class="btn-gold">Start Planning</a>
-      <a href="#about" class="btn-ghost">See the Itinerary →</a>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Egypt Private Tour Guide · Since 2009</p>
+    <h1 class="hero-title">Ancient Wonders.<br><em>Real Stories.</em></h1>
+    <p class="hero-sub">Private guided tours across Cairo, Luxor &amp; Aswan — led by Yahya, a Cairo native with 15+ years of experience turning ancient history into unforgettable journeys.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-primary">Plan My Tour</a>
+      <a href="#about" class="btn-outline">Explore the Tour</a>
     </div>
   </div>
 
-  <!-- ── Video Reel Strip ── -->
-  <div class="reel-bar">
-    <div class="reel-track" id="reelTrack">
-
-      <div class="reel-item active" data-index="0">
-        <div class="reel-media grad-pyramid">
-          <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=600&q=80"
-               alt="Cairo Pyramids" loading="lazy" onerror="this.style.display='none'" />
-          <video muted loop playsinline
-                 poster="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=600&q=80">
-            <source src="videos/egypt1.mp4" type="video/mp4" />
-          </video>
-          <div class="reel-icon">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <div class="reel-label">Cairo <span>Pyramids of Giza</span></div>
-      </div>
-
-      <div class="reel-item" data-index="1">
-        <div class="reel-media grad-temple">
-          <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=600&q=80"
-               alt="Luxor Temple" loading="lazy" onerror="this.style.display='none'" />
-          <video muted loop playsinline
-                 poster="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=600&q=80">
-            <source src="videos/egypt2.mp4" type="video/mp4" />
-          </video>
-          <div class="reel-icon">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <div class="reel-label">Luxor <span>Karnak Temple</span></div>
-      </div>
-
-      <div class="reel-item" data-index="2">
-        <div class="reel-media grad-dawn">
-          <img src="https://images.unsplash.com/photo-1595956353596-92a1ee4a7fac?w=600&q=80"
-               alt="Abu Simbel" loading="lazy" onerror="this.style.display='none'" />
-          <video muted loop playsinline
-                 poster="https://images.unsplash.com/photo-1595956353596-92a1ee4a7fac?w=600&q=80">
-            <source src="videos/egypt3.mp4" type="video/mp4" />
-          </video>
-          <div class="reel-icon">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <div class="reel-label">Abu Simbel <span>Rock Temple</span></div>
-      </div>
-
-      <div class="reel-item" data-index="3">
-        <div class="reel-media grad-sphinx">
-          <img src="https://images.unsplash.com/photo-1553342385-111fd6bc6ab3?w=600&q=80"
-               alt="The Sphinx" loading="lazy" onerror="this.style.display='none'" />
-          <video muted loop playsinline
-                 poster="https://images.unsplash.com/photo-1553342385-111fd6bc6ab3?w=600&q=80">
-            <source src="videos/egypt4.mp4" type="video/mp4" />
-          </video>
-          <div class="reel-icon">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <div class="reel-label">Giza <span>The Great Sphinx</span></div>
-      </div>
-
-      <div class="reel-item" data-index="4">
-        <div class="reel-media grad-nile">
-          <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=80"
-               alt="Aswan Nile" loading="lazy" onerror="this.style.display='none'" />
-          <video muted loop playsinline
-                 poster="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=80">
-            <source src="videos/egypt5.mp4" type="video/mp4" />
-          </video>
-          <div class="reel-icon">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <div class="reel-label">Aswan <span>Nile at Sunset</span></div>
-      </div>
-
-    </div><!-- /reel-track -->
-    <a href="#contact" class="reel-book">Book</a>
+  <div class="hero-scroll">
+    <div class="hero-scroll-bar"></div>
+    <span>Scroll</span>
   </div>
-
-  <!-- Gold progress bar -->
-  <div class="reel-progress-bar">
-    <div class="reel-progress-fill" id="reelProgressFill"></div>
-  </div>
-
-  <div class="hero-fade"></div>
 </section>
 
-<!-- ░░ QUICK STATS ░░ -->
-<section class="stats-band">
-  <div class="container stats-grid">
+<!-- ══════════════════════════════════════
+     STATS BAND
+══════════════════════════════════════ -->
+<section id="stats">
+  <div class="stats-grid container">
     <div class="stat-item reveal">
-      <span class="stat-num">10</span>
-      <span class="stat-unit">Days</span>
-      <span class="stat-desc">Carefully planned itinerary</span>
+      <div class="stat-num">10</div>
+      <div class="stat-label">Days · Full Itinerary</div>
     </div>
     <div class="stat-item reveal">
-      <span class="stat-num">3</span>
-      <span class="stat-unit">Cities</span>
-      <span class="stat-desc">Cairo · Luxor · Aswan</span>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Cities Covered</div>
     </div>
     <div class="stat-item reveal">
-      <span class="stat-num">500<small>+</small></span>
-      <span class="stat-unit">Travelers</span>
-      <span class="stat-desc">Guided across Egypt</span>
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Travelers Guided</div>
     </div>
     <div class="stat-item reveal">
-      <span class="stat-num">15<small>+</small></span>
-      <span class="stat-unit">Years</span>
-      <span class="stat-desc">Professional experience</span>
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years Experience</div>
     </div>
   </div>
 </section>
 
-<!-- ░░ ABOUT THE TOUR ░░ -->
-<section class="about-section" id="about">
+<!-- ══════════════════════════════════════
+     ABOUT / TOUR OVERVIEW
+══════════════════════════════════════ -->
+<section id="about" class="section">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-num">01</span>
-      <div>
-        <h2 class="section-heading">About the Tour</h2>
-        <p class="section-sub">A 10-day adventure through Egypt's greatest wonders</p>
-      </div>
-    </div>
-
-    <div class="about-layout">
-      <!-- Left: text -->
-      <div class="about-text reveal">
-        <p>We've designed a flowing itinerary that takes you through three of Egypt's most magnificent cities — each with its own character, its own magic, and its own ancient secrets waiting to be unlocked.</p>
-        <p>You'll stand at the foot of the Pyramids, walk through temples older than history, and drift along the Nile as the sun sets over a landscape unchanged for millennia. Every detail handled. Every moment <em class="gold-italic">yours</em>.</p>
-        <div class="about-photo-stack">
-          <div class="photo-slot grad-pyramid">
-            <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=80"
-                 alt="Pyramids of Giza" loading="lazy" onerror="this.style.display='none'" />
-            <div class="photo-slot-label">Cairo · Pyramids</div>
-          </div>
-          <div class="photo-slot grad-nile small">
-            <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=500&q=80"
-                 alt="Nile River" loading="lazy" onerror="this.style.display='none'" />
-            <div class="photo-slot-label">Nile River</div>
-          </div>
-        </div>
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <img loading="lazy" decoding="async" class="about-img-main"
+          src="images/yahya-3.jpg"
+          alt="Yahya at ancient Egyptian temple"
+          onerror="this.src='https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=900&q=80'"/>
+        <img loading="lazy" decoding="async" class="about-img-accent"
+          src="images/yahya-4.jpg"
+          alt="Egyptian desert at dusk"
+          onerror="this.src='https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?w=600&q=80'"/>
       </div>
 
-      <!-- Right: timeline -->
-      <div class="tour-timeline reveal" id="tours">
-        <div class="tl-item">
-          <div class="tl-marker">
-            <span class="tl-dot"></span>
-            <span class="tl-line"></span>
+      <div class="about-content reveal">
+        <span class="section-label">The Journey</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--cream);margin-bottom:.4rem;">A 10-Day Journey Through the Land of the Pharaohs</h2>
+        <div class="gold-rule"><div class="gold-rule-dot"></div></div>
+        <p class="about-text">From the iconic Pyramids of Giza to the mystical temples of Abu Simbel, this is Egypt as it was meant to be experienced — not from behind a tour bus window, but from the streets, the sands, and the stories that shaped civilisation itself.</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-city">Cairo</div>
+            <div class="tl-days">Days 1–3</div>
+            <p class="tl-desc">Pyramids of Giza at sunrise, the Great Sphinx, Egyptian Museum, Khan el-Khalili bazaar, and the historic Islamic quarter.</p>
           </div>
-          <div class="tl-body">
-            <div class="tl-days">Days 1 – 3</div>
-            <h3 class="tl-city">Cairo</h3>
-            <p class="tl-desc">The Pyramids of Giza, the Sphinx, Egyptian Museum, Khan el-Khalili bazaar, and an evening felucca on the Nile.</p>
-            <div class="tl-photo grad-pyramid">
-              <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=500&q=80"
-                   alt="Cairo" loading="lazy" onerror="this.style.display='none'" />
-              <div class="photo-slot-label">Cairo</div>
-            </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-city">Luxor</div>
+            <div class="tl-days">Days 4–6</div>
+            <p class="tl-desc">Valley of the Kings, Karnak Temple, Luxor Temple by night, West Bank tombs, and a traditional felucca sail on the Nile.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-city">Aswan &amp; Abu Simbel</div>
+            <div class="tl-days">Days 7–10</div>
+            <p class="tl-desc">Philae Island, Aswan High Dam, Nubian villages, and the awe-inspiring temples of Abu Simbel at dawn.</p>
           </div>
         </div>
 
-        <div class="tl-item">
-          <div class="tl-marker">
-            <span class="tl-dot"></span>
-            <span class="tl-line"></span>
-          </div>
-          <div class="tl-body">
-            <div class="tl-days">Days 4 – 6</div>
-            <h3 class="tl-city">Luxor</h3>
-            <p class="tl-desc">Valley of the Kings, Karnak Temple, Luxor Temple by night, and the quiet villages of the West Bank.</p>
-            <div class="tl-photo grad-temple">
-              <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=500&q=80"
-                   alt="Luxor" loading="lazy" onerror="this.style.display='none'" />
-              <div class="photo-slot-label">Luxor</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tl-item last">
-          <div class="tl-marker">
-            <span class="tl-dot"></span>
-          </div>
-          <div class="tl-body">
-            <div class="tl-days">Days 7 – 10</div>
-            <h3 class="tl-city">Aswan</h3>
-            <p class="tl-desc">Abu Simbel temples, Philae Island, a sunset Nile cruise, and the Nubian villages of Elephantine.</p>
-            <div class="tl-photo grad-dawn">
-              <img src="https://images.unsplash.com/photo-1595956353596-92a1ee4a7fac?w=500&q=80"
-                   alt="Aswan" loading="lazy" onerror="this.style.display='none'" />
-              <div class="photo-slot-label">Aswan</div>
-            </div>
-          </div>
+        <div style="margin-top:2.5rem;">
+          <a href="contact.html" class="btn-primary">Start Planning</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ MEET YAHYA ░░ -->
-<section class="yahya-section" id="yahya">
-  <div class="yahya-bg-art" aria-hidden="true">
-    <div class="art-pyramid"></div>
-    <div class="art-glow"></div>
-  </div>
-  <div class="container yahya-layout">
-    <div class="yahya-visual reveal">
-      <div class="yahya-photo-frame grad-guide">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
-             alt="Yahya — Egypt Tour Guide" loading="lazy" onerror="this.style.display='none'" />
-        <div class="photo-slot-label">Yahya · Your Guide</div>
-      </div>
-      <div class="yahya-tag">
-        <span class="tag-dot"></span> Available for tours 2025
-      </div>
-    </div>
-    <div class="yahya-info reveal">
-      <span class="section-num">02</span>
-      <h2 class="section-heading">Meet Yahya</h2>
-      <p class="yahya-lead">Born in Cairo. Trained in history.<br>Passionate about Egypt.</p>
-      <p class="yahya-bio">For over 15 years I've guided travelers from every corner of the world through the wonders of my homeland. I speak Arabic, English, French, and some Spanish — but the language I love most is the one that ancient Egypt carved into stone thousands of years ago.</p>
-      <p class="yahya-bio">I don't run tours. I share experiences. I take you where the tour buses don't stop, I tell you the stories the textbooks leave out, and I make sure you leave Egypt not just having <em class="gold-italic">seen</em> it, but having truly <em class="gold-italic">felt</em> it.</p>
-      <div class="yahya-badges">
-        <div class="badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          Licensed Tour Guide
-        </div>
-        <div class="badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          15+ Years Experience
-        </div>
-        <div class="badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Cairo Native
-        </div>
-      </div>
-      <div class="yahya-stats-row">
-        <div class="ys"><span class="ys-n">500+</span><span class="ys-l">Tours</span></div>
-        <div class="ys"><span class="ys-n">4</span><span class="ys-l">Languages</span></div>
-        <div class="ys"><span class="ys-n">30+</span><span class="ys-l">Countries</span></div>
-      </div>
-      <a href="#contact" class="btn-gold">Book with Yahya</a>
-    </div>
-  </div>
-</section>
-
-<!-- ░░ WHAT'S INCLUDED ░░ -->
-<section class="included-section" id="included">
+<!-- ══════════════════════════════════════
+     MEET YAHYA
+══════════════════════════════════════ -->
+<section id="guide" class="section">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-num">03</span>
-      <div>
-        <h2 class="section-heading">What's Included</h2>
-        <p class="section-sub">Everything taken care of — you just enjoy</p>
+    <div class="guide-grid">
+      <div class="guide-photo-wrap reveal">
+        <img loading="lazy" decoding="async" class="guide-photo"
+          src="images/yahya-1.jpg"
+          alt="Yahya — your personal Egypt tour guide"
+          onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80'"/>
+        <div class="guide-badge">⭐ Licensed Tour Guide · ETA Certified</div>
       </div>
-    </div>
-    <div class="included-grid">
-      <div class="inc-card reveal">
-        <div class="inc-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+
+      <div class="reveal">
+        <span class="section-label">Your Guide</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--cream);margin-bottom:.4rem;">Meet Yahya</h2>
+        <div class="gold-rule"><div class="gold-rule-dot"></div></div>
+        <p class="guide-bio">Born and raised in Cairo, Yahya has spent over <strong>15 years</strong> guiding travelers from every corner of the world through Egypt's extraordinary heritage. He holds a degree in Egyptology from Cairo University and is certified by the Egyptian Tourism Authority. His tours are not lectures — they are stories. Every hieroglyph, every temple corridor, every open-air bazaar comes alive when Yahya is your guide.</p>
+
+        <div class="lang-chips">
+          <span class="lang-chip">Arabic</span>
+          <span class="lang-chip">English</span>
+          <span class="lang-chip">French</span>
+          <span class="lang-chip">Spanish</span>
         </div>
-        <h3>Expert Guide</h3>
-        <p>Yahya personally leads every tour — your own Egyptian Egyptologist for 10 days.</p>
-      </div>
-      <div class="inc-card reveal">
-        <div class="inc-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+
+        <div class="cert-grid">
+          <div class="cert-card"><span class="cert-icon">🎓</span> Egyptology Degree · Cairo University</div>
+          <div class="cert-card"><span class="cert-icon">🏛️</span> Egyptian Tourism Authority Certified</div>
+          <div class="cert-card"><span class="cert-icon">📸</span> Personal Tour Photographer</div>
+          <div class="cert-card"><span class="cert-icon">🌍</span> 30+ Nationalities Guided</div>
         </div>
-        <h3>Flights</h3>
-        <p>International &amp; domestic flights arranged. Routes: your city → Cairo → Aswan → home.</p>
-      </div>
-      <div class="inc-card reveal">
-        <div class="inc-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
-        <h3>Transfers</h3>
-        <p>Private, air-conditioned vehicles from airports to hotels and all tour sites.</p>
-      </div>
-      <div class="inc-card reveal">
-        <div class="inc-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h3>Hotels</h3>
-        <p>4-star accommodation throughout. 2 guests per room. Breakfasts included every day.</p>
-      </div>
-      <div class="inc-card reveal">
-        <div class="inc-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-        </div>
-        <h3>Entry Tickets</h3>
-        <p>All site entry fees included — pyramids, Valley of the Kings, Abu Simbel, and more.</p>
-      </div>
-      <div class="inc-card reveal">
-        <div class="inc-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
-        </div>
-        <h3>Local Dining</h3>
-        <p>Curated restaurant selections — authentic Egyptian cuisine at every stop.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ CAPTURED MOMENTS (Gallery) ░░ -->
-<section class="gallery-section" id="gallery">
+<!-- ══════════════════════════════════════
+     WHAT'S INCLUDED
+══════════════════════════════════════ -->
+<section id="inclusions" class="section">
   <div class="container">
-    <div class="section-header centered reveal">
-      <h2 class="section-heading">From the Journey</h2>
-      <p class="section-sub">Photos from Yahya's tours across Egypt</p>
+    <div class="section-head">
+      <span class="section-label">The Package</span>
+      <h2>Everything Handled. You Just Show Up.</h2>
+      <div class="gold-rule"><div class="gold-rule-dot"></div></div>
+      <p>From the moment you land to the moment you leave — Yahya takes care of every detail.</p>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-cell tall grad-pyramid">
-        <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=900&q=80"
-             alt="Cairo Pyramids of Giza" loading="lazy" onerror="this.style.display='none'" />
-        <div class="gallery-label">Cairo · Pyramids of Giza</div>
+
+    <div class="inclusions-grid">
+      <div class="inc-card reveal">
+        <div class="inc-icon">✈️</div>
+        <div class="inc-title">Flights</div>
+        <p class="inc-desc">International &amp; domestic flights arranged — return from your city to Cairo, plus all internal routes between destinations.</p>
       </div>
-      <div class="gallery-cell grad-temple">
-        <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=700&q=80"
-             alt="Luxor Karnak Temple" loading="lazy" onerror="this.style.display='none'" />
-        <div class="gallery-label">Luxor · Karnak Temple</div>
+      <div class="inc-card reveal">
+        <div class="inc-icon">🏨</div>
+        <div class="inc-title">4-Star Hotels</div>
+        <p class="inc-desc">Handpicked accommodation in each city — chosen for character, location, and quality. Daily breakfast included throughout.</p>
       </div>
-      <div class="gallery-cell grad-nile">
-        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80"
-             alt="Aswan The Nile" loading="lazy" onerror="this.style.display='none'" />
-        <div class="gallery-label">Aswan · The Nile</div>
+      <div class="inc-card reveal">
+        <div class="inc-icon">🚘</div>
+        <div class="inc-title">Private Transfers</div>
+        <p class="inc-desc">Air-conditioned private vehicle from airports, hotels, and all sites. No shared buses, no waiting, no strangers.</p>
       </div>
-      <div class="gallery-cell grad-dawn">
-        <img src="https://images.unsplash.com/photo-1595956353596-92a1ee4a7fac?w=700&q=80"
-             alt="Abu Simbel at Dawn" loading="lazy" onerror="this.style.display='none'" />
-        <div class="gallery-label">Abu Simbel · Dawn</div>
+      <div class="inc-card reveal">
+        <div class="inc-icon">🎫</div>
+        <div class="inc-title">All Entry Tickets</div>
+        <p class="inc-desc">Pyramids of Giza, Valley of the Kings, Abu Simbel, the Egyptian Museum — every entrance fee covered upfront.</p>
       </div>
-      <div class="gallery-cell tall grad-sphinx">
-        <img src="https://images.unsplash.com/photo-1553342385-111fd6bc6ab3?w=900&q=80"
-             alt="Giza The Sphinx" loading="lazy" onerror="this.style.display='none'" />
-        <div class="gallery-label">Giza · The Sphinx</div>
+      <div class="inc-card reveal">
+        <div class="inc-icon">🍽️</div>
+        <div class="inc-title">Local Dining Tips</div>
+        <p class="inc-desc">Yahya's personal restaurant picks at every stop — authentic Egyptian cuisine at the places locals actually love.</p>
       </div>
-      <div class="gallery-cell wide grad-desert">
-        <img src="https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?w=1200&q=80"
-             alt="Western Desert" loading="lazy" onerror="this.style.display='none'" />
-        <div class="gallery-label">Western Desert</div>
+      <div class="inc-card reveal">
+        <div class="inc-icon">📸</div>
+        <div class="inc-title">Expert Photography</div>
+        <p class="inc-desc">Yahya knows every perfect angle at every landmark. You'll leave with stunning photos to keep forever.</p>
       </div>
     </div>
-    <p class="gallery-note reveal">Photos from past tours — your memories will be added to this wall.</p>
   </div>
 </section>
 
-<!-- ░░ REVIEWS ░░ -->
-<section class="reviews-section" id="reviews">
-  <div class="reviews-ambient" aria-hidden="true"></div>
+<!-- ══════════════════════════════════════
+     PHOTO GALLERY
+══════════════════════════════════════ -->
+<section id="gallery" class="section">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-num">04</span>
-      <div>
-        <h2 class="section-heading">Traveler Stories</h2>
-        <p class="section-sub">Real words from real people who explored Egypt with Yahya</p>
-      </div>
+    <div class="section-head">
+      <span class="section-label">The Experience</span>
+      <h2>Moments From the Journey</h2>
+      <div class="gold-rule"><div class="gold-rule-dot"></div></div>
+      <p>Snapshots from Yahya's Egypt — the places, the people, the light.</p>
     </div>
-    <div class="reviews-overflow">
-      <div class="reviews-track" id="reviewsTrack">
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <p class="review-text">Yahya made our Egypt trip absolutely unforgettable. His knowledge of ancient history is extraordinary, and he took us to hidden gems the tourist buses never stop at. The pyramids at sunrise — just us — is something I'll carry forever.</p>
-          <div class="review-footer">
-            <div class="review-avatar">S</div>
-            <div>
-              <strong>Sarah Mitchell</strong>
-              <span>New York, USA · May 2024</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <p class="review-text">I've traveled the world with many guides. Yahya is in a different league. He doesn't recite facts — he tells stories. By the end of the trip I felt like I understood Egypt, not just saw it. Best travel experience of my life.</p>
-          <div class="review-footer">
-            <div class="review-avatar">J</div>
-            <div>
-              <strong>James Thompson</strong>
-              <span>London, UK · March 2024</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <p class="review-text">From the Valley of the Kings to Abu Simbel at dawn, every day was more beautiful than the last. Yahya organized everything flawlessly and always had time for our questions, our detours, and our spontaneous requests.</p>
-          <div class="review-footer">
-            <div class="review-avatar">A</div>
-            <div>
-              <strong>Anna Kleinschmidt</strong>
-              <span>Berlin, Germany · January 2024</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <p class="review-text">The Nile cruise was the highlight. The food he recommended was authentic and incredible. Yahya speaks 4 languages, has the warmth of a friend and the expertise of a professor. We're already planning our return trip with him.</p>
-          <div class="review-footer">
-            <div class="review-avatar">M</div>
-            <div>
-              <strong>María Castillo</strong>
-              <span>Barcelona, Spain · Feb 2024</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-quote">"</div>
-          <p class="review-text">Family of 5, including my 70-year-old parents and 8-year-old son. Yahya tailored the pace for all of us without anyone feeling rushed or left out. Egypt is magical, and Yahya is its perfect ambassador.</p>
-          <div class="review-footer">
-            <div class="review-avatar">R</div>
-            <div>
-              <strong>Ravi Patel</strong>
-              <span>Mumbai, India · April 2024</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
+
+    <div class="gallery-mosaic">
+      <div class="g-item reveal">
+        <img loading="lazy" decoding="async" src="images/yahya-3.jpg" alt="Yahya at ancient Egyptian pillars"
+          onerror="this.src='https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=900&q=80'"/>
+        <div class="g-overlay"><span class="g-caption">Ancient Egypt · Cairo</span></div>
       </div>
-    </div>
-    <div class="reviews-nav">
-      <button class="rev-btn" id="reviewPrev">&#8592;</button>
-      <div class="rev-dots" id="reviewDots"></div>
-      <button class="rev-btn" id="reviewNext">&#8594;</button>
+      <div class="g-item reveal">
+        <img loading="lazy" decoding="async" src="images/yahya-1.jpg" alt="Yahya on an adventure"
+          onerror="this.src='https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=600&q=80'"/>
+        <div class="g-overlay"><span class="g-caption">Great Sphinx · Giza</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img loading="lazy" decoding="async" src="images/yahya-4.jpg" alt="Desert at dusk"
+          onerror="this.src='https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?w=600&q=80'"/>
+        <div class="g-overlay"><span class="g-caption">Desert at Dusk</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img loading="lazy" decoding="async" src="images/yahya-2.jpg" alt="On the Nile"
+          onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'"/>
+        <div class="g-overlay"><span class="g-caption">Nile · Aswan</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img loading="lazy" decoding="async" src="images/yahya-5.jpg" alt="Red Sea adventures"
+          onerror="this.src='https://images.unsplash.com/photo-1595956353596-92a1ee4a7fac?w=600&q=80'"/>
+        <div class="g-overlay"><span class="g-caption">Red Sea Coast</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img loading="lazy" decoding="async" src="images/yahya-6.jpg" alt="Above the world"
+          onerror="this.src='https://images.unsplash.com/photo-1553342385-111fd6bc6ab3?w=600&q=80'"/>
+        <div class="g-overlay"><span class="g-caption">Luxor · West Bank</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ░░ CONTACT ░░ -->
-<section class="contact-section" id="contact">
-  <div class="contact-art" aria-hidden="true">
-    <div class="art-pyramid right"></div>
-  </div>
-  <div class="container contact-layout">
+<!-- ══════════════════════════════════════
+     REVIEWS PREVIEW
+══════════════════════════════════════ -->
+<section id="reviews-preview" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Traveler Reviews</span>
+      <h2>What People Say About Yahya</h2>
+      <div class="gold-rule"><div class="gold-rule-dot"></div></div>
+      <p>Real words from real travelers who explored Egypt with Yahya. Every review is 5 stars.</p>
+    </div>
 
-    <!-- Left: bold CTA -->
-    <div class="contact-left reveal">
-      <span class="section-num">05</span>
-      <h2 class="contact-headline">Let's go<br>to <em>Egypt.</em></h2>
-      <p class="contact-lead">Send Yahya a message and he'll reach back within 24 hours to start building your perfect itinerary.</p>
-      <div class="contact-reach">
-        <a href="mailto:yahya@yahyatours.com" class="reach-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          yahya@yahyatours.com
+    <div class="reviews-preview-grid">
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Yahya made our Egypt trip absolutely unforgettable. His knowledge of ancient history is extraordinary, and he took us to hidden gems the tourist buses never stop at. The pyramids at sunrise — just the two of us — is something I'll carry forever.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-teal">SM</div>
+          <div>
+            <div class="review-name">Sarah Mitchell</div>
+            <div class="review-origin">New York, USA · May 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I've traveled the world with many guides. Yahya is in a different league. He doesn't recite facts — he tells stories. By the end of the trip I felt like I understood Egypt, not just saw it. Best travel experience of my life.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-terra">JT</div>
+          <div>
+            <div class="review-name">James Thompson</div>
+            <div class="review-origin">London, UK · March 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">From the Valley of the Kings to Abu Simbel at dawn, every day was more beautiful than the last. Yahya organised everything flawlessly and always had time for our questions and spontaneous requests.</p>
+        <div class="review-foot">
+          <div class="review-avatar av-brown">AK</div>
+          <div>
+            <div class="review-name">Anna Kleinschmidt</div>
+            <div class="review-origin">Berlin, Germany · January 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="reviews.html" class="btn-ghost">Read All Reviews <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CONTACT PREVIEW
+══════════════════════════════════════ -->
+<section id="contact-preview" class="section">
+  <div class="container">
+    <div class="cp-inner">
+      <div class="cp-left reveal">
+        <span class="section-label" style="justify-content:flex-start;">Get In Touch</span>
+        <h2>Ready to Explore Egypt?</h2>
+        <div class="gold-rule" style="margin:1rem 0 1.5rem;max-width:200px;"><div class="gold-rule-dot"></div></div>
+        <p>Tell Yahya your dates, your group size, and what you'd love to experience. He'll reply within 24 hours with a personalised plan built around you.</p>
+        <a href="contact.html" class="btn-primary">Contact Yahya</a>
+      </div>
+
+      <div class="cp-cards reveal">
+        <div class="cp-card">
+          <div class="cp-card-ico">✉️</div>
+          <div>
+            <div class="cp-lbl">Email</div>
+            <div class="cp-val">yahya@yahyatours.com</div>
+          </div>
+        </div>
+        <div class="cp-card">
+          <div class="cp-card-ico">💬</div>
+          <div>
+            <div class="cp-lbl">WhatsApp</div>
+            <div class="cp-val">+20 100 123 4567</div>
+          </div>
+        </div>
+        <div class="cp-card">
+          <div class="cp-card-ico">📍</div>
+          <div>
+            <div class="cp-lbl">Based In</div>
+            <div class="cp-val">Cairo, Egypt 🇪🇬</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:.8rem;display:inline-flex;">
+          <svg width="60" height="38" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <defs><linearGradient id="fG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E2C06A"/><stop offset="100%" stop-color="#8A7030"/></linearGradient></defs>
+            <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#fG)" stroke-width="2"/>
+            <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#fG)" opacity=".7"/>
+            <text x="28" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG)" text-anchor="middle">Y</text>
+            <text x="55" y="40" font-family="Cormorant Garamond,Georgia,serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
+            <text x="83" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG)" text-anchor="middle">T</text>
+          </svg>
         </a>
-        <a href="tel:+201001234567" class="reach-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>
-          +20 100 123 4567
-        </a>
+        <p>Your personal guide to the land of the Pharaohs. Private tours crafted around you — Cairo, Luxor, Aswan, and beyond.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="Facebook">👤</a>
+          <a href="https://wa.me/201001234567" class="social-btn" aria-label="WhatsApp">💬</a>
+          <a href="mailto:yahya@yahyatours.com" class="social-btn" aria-label="Email">✉️</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Book a Tour</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="contact.html">Cairo &amp; Pyramids</a></li>
+          <li><a href="contact.html">Luxor &amp; Nile</a></li>
+          <li><a href="contact.html">Aswan &amp; Abu Simbel</a></li>
+          <li><a href="contact.html">Red Sea &amp; Sinai</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:yahya@yahyatours.com">yahya@yahyatours.com</a></li>
+          <li><a href="https://wa.me/201001234567">WhatsApp</a></li>
+          <li><a href="contact.html">Send a Message</a></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Right: form -->
-    <div class="contact-right reveal">
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="field-row">
-          <div class="field"><input type="text"  name="name"  placeholder="Your name"  required /></div>
-          <div class="field"><input type="email" name="email" placeholder="Email address" required /></div>
-        </div>
-        <div class="field"><input type="tel" name="phone" placeholder="Phone number (optional)" /></div>
-        <div class="field">
-          <select name="tour">
-            <option value="" disabled selected>Which tour interests you?</option>
-            <option>10-Day Classic Egypt (Cairo · Luxor · Aswan)</option>
-            <option>5-Day Cairo &amp; Pyramids</option>
-            <option>7-Day Nile Cruise</option>
-            <option>Custom Private Tour</option>
-          </select>
-        </div>
-        <div class="field"><textarea name="message" placeholder="Your message, travel dates, or group size…" rows="4"></textarea></div>
-        <button type="submit" class="btn-gold btn-full">
-          <span class="btn-text">Send Message</span>
-          <span class="btn-loading" hidden>Sending…</span>
-        </button>
-      </form>
+    <div class="footer-bottom">
+      <span>© 2025 Yahya Tours Egypt · Cairo 🇪🇬</span>
+      <span>Made with care in the land of the Pharaohs</span>
     </div>
-  </div>
-</section>
-
-<!-- ░░ FOOTER ░░ -->
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <a href="#home" class="nav-logo">
-        <span class="logo-eye">◈</span> YAHYA TOURS
-      </a>
-      <p>Your guide to the land of the Pharaohs since 2009.<br>Cairo, Egypt.</p>
-    </div>
-    <nav class="footer-nav">
-      <a href="#about">About</a>
-      <a href="#tours">Tours</a>
-      <a href="#included">Included</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="footer-social">
-      <a href="#" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="#" aria-label="Facebook">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-      </a>
-      <a href="#" aria-label="WhatsApp">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="footer-bar">
-    <p>© 2024 Yahya Tours Egypt. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- Toast -->
-<div class="toast" id="toast">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-  Message sent! Yahya will be in touch soon.
-</div>
+<div id="toast">✅ Message sent! Yahya will reply within 24 hours.</div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
