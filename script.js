@@ -1,16 +1,24 @@
 /* ============================================================
-   YAHYA TOURS — script.js  |  Shared across all pages
+   YAHYA TOURS — script.js
    ============================================================ */
+
+/* ── Supabase client ── */
+const SUPA_URL = 'https://apuzdtktacehquqstuhz.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwdXpkdGt0YWNlaHF1cXN0dWh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2MDI2OTMsImV4cCI6MjA5NDE3ODY5M30.i-kukwJPAdgue4jURlMecqMdON0LjMIjTZdKYEipFYk';
+const sb = (typeof supabase !== 'undefined') ? supabase.createClient(SUPA_URL, SUPA_KEY) : null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initThemeToggle();
   initScrollReveal();
   initParticles();
-  if (document.getElementById('contactForm')) initContactForm();
-  if (document.querySelector('.faq-item'))    initFAQ();
-  if (document.getElementById('ratingBars')) animateRatingBars();
-  if (document.getElementById('hero'))        heroLoad();
+  if (document.getElementById('contactForm'))        initContactForm();
+  if (document.querySelector('.faq-item'))           initFAQ();
+  if (document.getElementById('ratingBars'))         animateRatingBars();
+  if (document.getElementById('hero'))               heroLoad();
+  if (document.getElementById('reviewsGrid'))        loadReviews('reviewsGrid', null);
+  if (document.getElementById('reviewsPreviewGrid')) loadReviews('reviewsPreviewGrid', 3);
+  if (document.getElementById('reviewForm'))         initReviewForm();
 });
 
 /* ── Hero zoom on load ── */
@@ -81,7 +89,6 @@ function initParticles() {
   let W, H, rafId, paused = false;
 
   function resize() {
-    // Use devicePixelRatio capped at 1.5 to avoid overdraw on HiDPI
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     W = canvas.offsetWidth;
     H = canvas.offsetHeight;
@@ -92,7 +99,6 @@ function initParticles() {
   resize();
   window.addEventListener('resize', debounce(resize, 300), { passive: true });
 
-  // Pause when tab is not visible
   document.addEventListener('visibilitychange', () => {
     paused = document.hidden;
     if (!paused && !rafId) loop();
@@ -126,7 +132,6 @@ function initParticles() {
     }
   }
 
-  // Reduced count: 55 is plenty for the visual effect
   const particles = Array.from({ length: 55 }, () => new Particle());
 
   function loop() {
@@ -142,10 +147,139 @@ function initParticles() {
   loop();
 }
 
+/* ── Load Reviews from Supabase ── */
+async function loadReviews(containerId, limit) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  if (!sb) {
+    container.innerHTML = '<p class="reviews-loading">Reviews unavailable — Supabase not loaded.</p>';
+    return;
+  }
+
+  let query = sb.from('reviews').select('*').order('created_at', { ascending: false });
+  if (limit) query = query.limit(limit);
+
+  const { data, error } = await query;
+
+  if (error || !data || data.length === 0) {
+    container.innerHTML = '<p class="reviews-loading">No reviews yet — be the first!</p>';
+    return;
+  }
+
+  const avClasses = ['av-teal', 'av-terra', 'av-brown', 'av-tan'];
+
+  container.innerHTML = data.map((r, i) => {
+    const initials = r.name.split(' ').filter(Boolean).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    const avClass  = avClasses[i % avClasses.length];
+    const filled   = Math.min(5, Math.max(0, r.stars || 5));
+    const stars    = '★'.repeat(filled) + '☆'.repeat(5 - filled);
+    const date     = new Date(r.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+    return `
+      <div class="review-card reveal">
+        <div class="review-quote-mark">"</div>
+        <div class="review-stars">${stars}</div>
+        <p class="review-text">${escHtml(r.text)}</p>
+        <div class="review-foot">
+          <div class="review-avatar ${avClass}">${escHtml(initials)}</div>
+          <div>
+            <div class="review-name">${escHtml(r.name)}</div>
+            <div class="review-origin">${escHtml(r.origin)} · ${date}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  /* Update rating bar counts if on the full reviews page */
+  const countEl = document.querySelector('.rating-count');
+  if (countEl) {
+    countEl.textContent = `Based on ${data.length} review${data.length !== 1 ? 's' : ''}`;
+    updateRatingBars(data);
+  }
+
+  initScrollReveal();
+}
+
+function updateRatingBars(data) {
+  const counts = [0, 0, 0, 0, 0]; /* index 0 = 1★ … index 4 = 5★ */
+  data.forEach(r => { const s = Math.min(5, Math.max(1, r.stars || 5)); counts[s - 1]++; });
+  const total = data.length || 1;
+  document.querySelectorAll('.bar-row').forEach(row => {
+    const lbl   = row.querySelector('.bar-lbl');
+    const fill  = row.querySelector('.bar-fill');
+    const count = row.querySelector('.bar-count');
+    if (!lbl || !fill || !count) return;
+    const star = parseInt(lbl.textContent);
+    const n    = counts[star - 1];
+    fill.dataset.pct = Math.round((n / total) * 100);
+    count.textContent = n;
+  });
+  animateRatingBars();
+}
+
+/* ── Review Submit Form ── */
+function initReviewForm() {
+  if (!sb) return;
+  const form   = document.getElementById('reviewForm');
+  const picker = document.getElementById('starPicker');
+  const hidden = document.getElementById('r-stars');
+  if (!form || !picker || !hidden) return;
+
+  let selectedStars = 5;
+  const spans = Array.from(picker.querySelectorAll('span'));
+
+  function lightUpTo(n) {
+    spans.forEach((s, i) => s.classList.toggle('lit', i < n));
+  }
+  lightUpTo(5);
+
+  spans.forEach((s, i) => {
+    s.addEventListener('mouseover', () => lightUpTo(i + 1));
+    s.addEventListener('click', () => {
+      selectedStars = i + 1;
+      hidden.value  = selectedStars;
+      lightUpTo(selectedStars);
+    });
+  });
+  picker.addEventListener('mouseleave', () => lightUpTo(selectedStars));
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name   = form.querySelector('[name="name"]').value.trim();
+    const origin = form.querySelector('[name="origin"]').value.trim();
+    const text   = form.querySelector('[name="text"]').value.trim();
+    if (!name || !origin || !text) {
+      form.style.animation = 'shake .4s ease';
+      form.addEventListener('animationend', () => form.style.animation = '', { once: true });
+      return;
+    }
+
+    const btnText = form.querySelector('.btn-text');
+    const btnLoad = form.querySelector('.btn-loading');
+    if (btnText) btnText.style.display = 'none';
+    if (btnLoad) btnLoad.style.display = 'inline';
+
+    const { error } = await sb.from('reviews').insert({ name, origin, text, stars: selectedStars });
+
+    if (btnText) btnText.style.display = '';
+    if (btnLoad) btnLoad.style.display = 'none';
+
+    if (!error) {
+      form.reset();
+      selectedStars = 5;
+      hidden.value  = 5;
+      lightUpTo(5);
+      showToast('Your review has been published! Thank you.');
+      await loadReviews('reviewsGrid', null);
+    } else {
+      showToast('Something went wrong. Please try again.');
+    }
+  });
+}
+
 /* ── Contact Form ── */
 function initContactForm() {
-  const form  = document.getElementById('contactForm');
-  const toast = document.getElementById('toast');
+  const form = document.getElementById('contactForm');
   if (!form) return;
 
   const btnText = form.querySelector('.btn-text');
@@ -185,10 +319,7 @@ function initContactForm() {
       if (btnText) btnText.style.display = '';
       if (btnLoad) btnLoad.style.display = 'none';
       form.reset();
-      if (toast) {
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4500);
-      }
+      showToast('Message sent! Yahya will reply within 24 hours.');
     }, 800);
   });
 }
@@ -212,7 +343,7 @@ function animateRatingBars() {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       block.querySelectorAll('.bar-fill').forEach(bar => {
-        bar.style.width = bar.dataset.pct + '%';
+        bar.style.width = (bar.dataset.pct || 0) + '%';
       });
       io.disconnect();
     });
@@ -220,28 +351,46 @@ function animateRatingBars() {
   io.observe(block);
 }
 
-/* ── Theme Toggle ── */
+/* ── Theme Toggle (light default → toggle dark) ── */
 function initThemeToggle() {
   const btn = document.getElementById('themeToggle');
   if (!btn) return;
   _syncThemeIcon(btn);
   btn.addEventListener('click', () => {
     const html = document.documentElement;
-    if (html.dataset.theme === 'light') {
+    if (html.dataset.theme === 'dark') {
       delete html.dataset.theme;
       localStorage.removeItem('yahya-theme');
     } else {
-      html.dataset.theme = 'light';
-      localStorage.setItem('yahya-theme', 'light');
+      html.dataset.theme = 'dark';
+      localStorage.setItem('yahya-theme', 'dark');
     }
     _syncThemeIcon(btn);
   });
 }
 
 function _syncThemeIcon(btn) {
-  const light = document.documentElement.dataset.theme === 'light';
-  btn.querySelector('.theme-icon').textContent = light ? '☾' : '☀';
-  btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+  const dark = document.documentElement.dataset.theme === 'dark';
+  btn.querySelector('.theme-icon').textContent = dark ? '☀' : '☾';
+  btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+/* ── Show Toast ── */
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4500);
+}
+
+/* ── HTML escape ── */
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 /* ── Utility ── */

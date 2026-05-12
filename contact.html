@@ -18,22 +18,7 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <svg class="logo-svg" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <defs>
-          <linearGradient id="logoG" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#E2C06A"/>
-            <stop offset="55%" stop-color="#C9A84C"/>
-            <stop offset="100%" stop-color="#8A7030"/>
-          </linearGradient>
-        </defs>
-        <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#logoG)" stroke-width="2.2"/>
-        <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#logoG)" opacity=".75"/>
-        <circle cx="2.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
-        <circle cx="107.5" cy="27" r="2.5" fill="url(#logoG)" opacity=".5"/>
-        <text x="28" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">Y</text>
-        <text x="55" y="40" font-family="Cormorant Garamond, Georgia, serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
-        <text x="83" y="42" font-family="Cormorant Garamond, Georgia, serif" font-size="35" font-weight="700" fill="url(#logoG)" text-anchor="middle">T</text>
-      </svg>
+      <img src="images/yaya-logo.png" class="logo-img" alt="YAYA Tours"/>
       <div class="logo-wordmark">Yahya Tours<small>Egypt Private Guide</small></div>
     </a>
 
@@ -44,7 +29,7 @@
     </ul>
 
     <a href="contact.html" class="btn-primary nav-cta">Book Now</a>
-    <button id="themeToggle" class="theme-btn" aria-label="Switch to light mode"><span class="theme-icon">☀</span></button>
+    <button id="themeToggle" class="theme-btn" aria-label="Switch to dark mode"><span class="theme-icon">☾</span></button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -335,15 +320,8 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" style="display:inline-flex;margin-bottom:.8rem;">
-          <svg width="60" height="38" viewBox="0 0 110 68" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <defs><linearGradient id="fG3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E2C06A"/><stop offset="100%" stop-color="#8A7030"/></linearGradient></defs>
-            <rect x="2" y="2" width="106" height="50" rx="25" ry="25" stroke="url(#fG3)" stroke-width="2"/>
-            <rect x="10" y="49" width="90" height="9" rx="4.5" fill="url(#fG3)" opacity=".7"/>
-            <text x="28" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG3)" text-anchor="middle">Y</text>
-            <text x="55" y="40" font-family="Cormorant Garamond,Georgia,serif" font-size="20" fill="#907659" text-anchor="middle">&amp;</text>
-            <text x="83" y="42" font-family="Cormorant Garamond,Georgia,serif" font-size="35" font-weight="700" fill="url(#fG3)" text-anchor="middle">T</text>
-          </svg>
+        <a href="index.html" class="nav-logo" style="margin-bottom:.8rem;display:inline-flex;">
+          <img src="images/yaya-logo.png" class="logo-img" alt="YAYA Tours"/>
         </a>
         <p>Your personal guide to the land of the Pharaohs. Private tours crafted around you — Cairo, Luxor, Aswan, and beyond.</p>
         <div class="social-row">
@@ -387,9 +365,8 @@
   </div>
 </footer>
 
-<div id="toast">✅ Message sent! Yahya will reply within 24 hours.</div>
+<div id="toast"></div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
